@@ -29,3 +29,19 @@
    ```
 
 4. 如果你想把一个iso 文件烧制出来更简单了。右键点这个文件，有烧录的选项。
+
+
+
+## 指令说明
+
+指令示例：
+
+```
+mkisofs -l -v -r -J -o ./kylin-monitor.iso Kylin-Monitor-x86_64_V1.0/
+```
+
+- -l 允许长文件名
+-   -J 或 -joliet 参数，使用Joliet格式的目录与文件名称
+-   -r 使用Rock Ridge，并开放全部文件的读取权限
+-   -v verbose，允许冗长
+-   -o 设置输出文件名
