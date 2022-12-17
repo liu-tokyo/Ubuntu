@@ -15,7 +15,7 @@
 通过以下命令可以查看apt缓存占用空间大小：
 
 ```
-du -sh /var/cache/apt/archives
+sudo du -sh /var/cache/apt/archives
 ```
 
 一旦决定清理apt缓存，清理命令如下：
