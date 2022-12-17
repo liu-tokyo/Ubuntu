@@ -8,7 +8,7 @@
 
 **1.查看你的系统里面的swappiness**
 
-```
+```bash
 $ cat /proc/sys/vm/swappiness
 ```
 
@@ -16,21 +16,21 @@ $ cat /proc/sys/vm/swappiness
 
 **2.修改swappiness值为10**
 
-```
+```bash
 $ sudo sysctl vm.swappiness=10
 ```
 
 但是这只是临时性的修改，在你重启系统后会恢复默认的60，所以，还要做一步：
 
-```
-$ gksudo gedit /etc/sysctl.conf
+```bash
+$ sudo nano /etc/sysctl.conf
 ```
 
 在这个文档的最后加上这样一行:
 
-```
+```properties
 vm.swappiness=10
 ```
 
 然后保存，重启。ok，你的设置就生效了。你会发现，现在乌斑兔儿跑得更快了！
-当然，你可以用其他编辑器进行修改，如kate，vi,vim,nano……只需要把gedit替换成它们就ok了！因为考虑到大多数人都用的gnome桌面，就写的gedit。
+当然，你可以用其他编辑器进行修改，如kate、vi、vim、gedit……只需要把`nano`替换成它们就ok了！考虑到大多数人都用的gnome桌面，用`gedit`更普遍。
