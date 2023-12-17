@@ -2,7 +2,7 @@
 
 1. 如果你是直接从cd 压制iso 文件的，执行
 
-   ```
+   ```bash
    sudo umount /dev/cdrom
    
    dd if=/dev/cdrom of=file.iso bs=1024
@@ -12,19 +12,19 @@
 
    安装 mkisofs
 
-   ```
+   ```bash
    sudo apt install mkisofs
    ```
 
    制作ISO文件
 
-   ```
+   ```bash
    mkisofs -r -o file.iso your_folder_name/
    ```
 
 3. 如果你想装酷生成一个MD5 文件，执行
 
-   ```
+   ```bash
    md5sum file.iso > file.iso.md5
    ```
 
@@ -34,14 +34,14 @@
 
 ## 指令说明
 
-指令示例：
+- 指令示例：
 
-```
-mkisofs -l -v -r -J -o ./kylin-monitor.iso Kylin-Monitor-x86_64_V1.0/
-```
+    ```bash
+    mkisofs -l -v -r -J -o ./kylin-monitor.iso Kylin-Monitor-x86_64_V1.0/
+    ```
 
-- -l 允许长文件名
--   -J 或 -joliet 参数，使用Joliet格式的目录与文件名称
--   -r 使用Rock Ridge，并开放全部文件的读取权限
--   -v verbose，允许冗长
--   -o 设置输出文件名
+    - `-l` 允许长文件名
+    - `-J` 或 -joliet 参数，使用Joliet格式的目录与文件名称
+    - `-r` 使用Rock Ridge，并开放全部文件的读取权限
+    - `-v` verbose，允许冗长
+    - `-o` 设置输出文件名
