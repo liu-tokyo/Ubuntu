@@ -7,14 +7,12 @@
 ## 检查3D加速器是否正在工作。
 
 - 要做到这一点，在终端输入：
-        
-    ```shell
+  ```shell
     glxinfo | grep rendering     
     ```
     
-- 如果 3D 加速工作正常，将会显示以下内容：
-        
-    ```shell
+- 如果 3D 加速工作正常，将会显示以下内容：      
+  ```shell
     direct rendering: Yes
     ```
     

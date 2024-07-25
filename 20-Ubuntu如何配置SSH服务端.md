@@ -2,16 +2,16 @@
 
 ## 1. 目标分析
 
-　SSH 为Secure Shell的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。SSH最初是UNIX系统上的一个程序，后来又迅速扩展到其他操作平台。SSH在正确使用时可弥补网络中的漏洞。SSH客户端适用于多种平台。几乎所有UNIX平台—包括HP-UX、Linux、AIX、Solaris、DigitalUNIX、Irix，以及其他平台，都可运行SSH。  
-　现在我们知道SSH其实最早是一个安全协议，这个协议就是为远程登录会话而生。因为这个协议，衍生的的SSH程序是我们要安装的软件。要利用SSH连接两台机器，可想可知一个要作为客户端访问，另外一台要作为服务端提供被访问的服务。我们也知道很多Linux、OSX等类Unix系统都已自带了SSH的客户端，Windows也有不少类似PuTTY这样优秀的软件。
-So，我们接下来要做的其实是如何安装并开启SSH Server。
+　`SSH` 为`Secure Shell`的缩写，由 `IETF` 的网络小组（`Network Working Group`）所制定；`SSH` 为建立在应用层基础上的安全协议。`SSH` 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 `SSH` 协议可以有效防止远程管理过程中的信息泄露问题。`SSH`最初是`UNIX`系统上的一个程序，后来又迅速扩展到其他操作平台。`SSH`在正确使用时可弥补网络中的漏洞。`SSH`客户端适用于多种平台。几乎所有`UNIX`平台—包括`HP-UX`、`Linux`、`AIX`、`Solaris`、`DigitalUNIX`、`Irix`...以及其他平台，都可运行`SSH`。  
+　现在我们知道`SSH`其实最早是一个安全协议，这个协议就是为远程登录会话而生。因为这个协议，衍生的的SSH程序是我们要安装的软件。要利用`SSH`连接两台机器，可想可知一个要作为客户端访问，另外一台要作为服务端提供被访问的服务。我们也知道很多`Linux`、`OSX`等类`Unix`系统都已自带了`SSH`的客户端，`Windows`也有不少类似`PuTTY`这样优秀的软件。
+So，我们接下来要做的其实是如何安装并开启`SSH Server`。
 
-- 服务器端：Ubuntu 22.04
-- 客户端：Debian 11.4
+- 服务器端：`Ubuntu 22.04`
+- 客户端：`Debian 11.4`
 
 ## 2. 安装步骤
 
-- 确定Ubuntu是否安装SSH服务
+- 确定`Ubuntu`是否安装`SSH`服务
 
   ```bash
   systemctl status ssh
@@ -24,13 +24,13 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   Unit ssh.service could not be found.
   ```
 
-- 安装SSH Server
+- 安装`SSH Server`
 
   ```bash
   sudo apt install openssh-server
   ```
 
-  确定Ubuntu SSH服务状态：
+  确定`Ubuntu SSH`服务状态：
 
   ```bash
   systemctl status ssh
@@ -60,13 +60,13 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
 
   现在能看到：
 
-  * 第一行加载状态，已加载ssh.service文件；
-  * 第二行是否活动，正在运行；并且留意到一个守护进程sshd；
-  * 再往下看到监听的端口是22。
+  * 第一行加载状态，已加载`ssh.service`文件；
+  * 第二行是否活动，正在运行；并且留意到一个守护进程`sshd`；
+  * 再往下看到监听的端口是`22`。
 
-  至此，我们的SSH服务端已经安装启动OK。
+  至此，我们的`SSH`服务端已经安装启动OK。
 
-- 确定Ubuntu机器的IP
+- 确定`Ubuntu`机器的`IP`：
 
   ```bash
   ifcofnig 
@@ -78,10 +78,13 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   sudo apt install net-tools
   ```
 
-  其实输入下面的指令更加直接：
+  其实输入下面的指令更加直接（以下所有指令都可以）：
 
   ```bash
   ip a
+  ip addr
+  ip address
+  ip address show
   ```
 
   IP地址信息如下：
@@ -107,8 +110,6 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
           TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
   ```
 
-  
-
 - 确定是否可访问Ubuntu
 
   ```bash
@@ -117,15 +118,15 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
 
 ## 3. SSH登录 - Debian
 
-- 使用账号密码登录Ubuntu
+- 使用账号密码登录`Ubuntu`
 
-  Debian11.4自带客户端，直接输入如下指令即可：
+  `Debian11.4`自带客户端，直接输入如下指令即可：
 
   ```bash
   ssh test@192.168.114.155 -p 22
   ```
 
-  对于第一次登陆的会提示主机不被认可，加密签名的指纹。输入 yes 确认，继续...  
+  对于第一次登陆的会提示主机不被认可，加密签名的指纹。输入 `yes` 确认，继续...  
   需要验证 `Ubuntu` 当前用户 `test` 的登录密码，输入确认即可登录成功。
 
   具体信息如下：
@@ -170,7 +171,7 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
 
 - 退出登录
 
-  输入 exit 指令，退出登录：
+  输入 `exit` 指令，退出登录：
 
   ```bash
   test@test-virtual-machine:~$ exit
@@ -226,7 +227,6 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   sudo ufw allow from your_ip to any port 22
   ```
 
-  
 
 ## 6. 免密登录
 
@@ -238,16 +238,25 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
 
 ### 6.1 基于口令的安全验证
 
-　只要你知道自己帐号和口令，就可以登录到远程主机。所有传输的数据都会被加密， 但是不能保证你正在连接的服务器就是你想连接的服务器。这个过程如下：（1）远程主机收到用户的登录请求，把自己的公钥发给用户。（2）用户使用这个公 钥，将登录密码加密后，发送回来。（3）远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。这种方式可能会有别的服务器在冒充真正的服 务器，将公钥发送给客户端，客户端就会将密码加密后发送给冒充的服务器，冒充的服务器就可以拿自己的私钥获取到密码，也就是受到“中间人”这种方式的攻 击。  
-　值得一说的是当第一次链接远程主机时，会提示您当前主机的”公钥指纹”，询问您是否继续，如果选择继续后就可以输入密码进行登录了，当远程的主机接受以后，该台服务器的公钥就会保存到~/.ssh/known_hosts文件中。
+只要你知道自己帐号和口令，就可以登录到远程主机。所有传输的数据都会被加密， 但是不能保证你正在连接的服务器就是你想连接的服务器。
+
+这个过程如下：
+
+1. 远程主机收到用户的登录请求，把自己的公钥发给用户。
+
+2. 用户使用这个公 钥，将登录密码加密后，发送回来。
+
+3. 远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。这种方式可能会有别的服务器在冒充真正的服 务器，将公钥发送给客户端，客户端就会将密码加密后发送给冒充的服务器，冒充的服务器就可以拿自己的私钥获取到密码，也就是受到“中间人”这种方式的攻 击。 
+
+值得一说的是当第一次链接远程主机时，会提示您当前主机的”公钥指纹”，询问您是否继续，如果选择继续后就可以输入密码进行登录了，当远程的主机接受以后，该台服务器的公钥就会保存到`~/.ssh/known_hosts`文件中。
 
 ### 6.2 基于密匙的安全验证
 
-　需要依靠密匙，也就是你必须为自己创建一对密匙，并把公用密匙放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的密匙进行安全验证。服务器收到请求之后，先在该服务器上你的主目录下寻找你的公用密匙，然后把它和你发送过来的公用密匙进行比较。如果两个密匙一致，服务器就用公用密匙加密“质询”并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私人密匙解密再把它发送给服务器。用这种方式，你必须知道自己密匙的口令。但是，与第一种级别相比，第二种级别不需要在网络上传送口令。第二种级别不仅加密所有传送的数据，而且“中间人”这种攻击 方式也是不可能的（因为他没有你的私人密匙）。但是**整个登录的过程可能需要10秒**，但是相比输入密码的方式来说10秒也不长。
+需要依靠密匙，也就是你必须为自己创建一对密匙，并把公用密匙放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的密匙进行安全验证。服务器收到请求之后，先在该服务器上你的主目录下寻找你的公用密匙，然后把它和你发送过来的公用密匙进行比较。如果两个密匙一致，服务器就用公用密匙加密“质询”并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私人密匙解密再把它发送给服务器。用这种方式，你必须知道自己密匙的口令。但是，与第一种级别相比，第二种级别不需要在网络上传送口令。第二种级别不仅加密所有传送的数据，而且“中间人”这种攻击 方式也是不可能的（因为他没有你的私人密匙）。但是整个登录的过程可能需要`10秒`，但是相比输入密码的方式来说`10秒`也不长。
 
-　那么如何生成自己的一对密钥呢？
+那么如何生成自己的一对密钥呢？
 
-- 打开终端执行 ssh-keygen：
+- 打开终端执行 `ssh-keygen`：
 
   ```bash
   C:\Users\liu>ssh-keygen -t rsa
@@ -273,18 +282,16 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   +----[SHA256]-----+
   ```
 
-  该命令会在~/.ssh/目录下创建id_rsa、id_rsa.pub两个文件，分别为您的公钥和私钥。
+  该命令会在`~/.ssh/`目录下创建`id_rsa`、`id_rsa.pub`两个文件，分别为您的公钥和私钥。
 
-将公钥拷贝到服务器的~/.ssh/authorized_keys文件中就可以了。  
+将公钥拷贝到服务器的`~/.ssh/authorized_keys`文件中就可以了。  
 拷贝方法有如下几种：
 
-1. 将公钥通过scp拷贝到服务器上，然后追加到 ~/.ssh/authorized_keys 文件中，这种方式比较麻烦。scp -P 22 ~/.ssh/id_rsa.pub user@host:~/。
-2. 通过ssh-copyid程序，ssh-copyid user@host即可，但是这种方式不支持更改端口号（我没找到）。该程序ubuntu系统自带无需安装，其实该程序为一个脚本。
-3. 可以通过cat ~/.ssh/id_rsa.pub | ssh -p 22 user@host ‘cat >> ~/.ssh/authorized_keys’，这个也是我比较常用的方法，因为可以更改端口号。
+1. 将公钥通过`scp`拷贝到服务器上，然后追加到 `~/.ssh/authorized_keys` 文件中，这种方式比较麻烦。`scp -P 22 ~/.ssh/id_rsa.pub user@host:~/`。
+2. 通过`ssh-copyid`程序，`ssh-copyid user@host`即可，但是这种方式不支持更改端口号（我没找到）。该程序`ubuntu`系统自带无需安装，其实该程序为一个脚本。
+3. 可以通过`cat ~/.ssh/id_rsa.pub | ssh -p 22 user@host 'cat >> ~/.ssh/authorized_keys'`，这个也是我比较常用的方法，因为可以更改端口号。
 
 当然还有很多其它办法，再次不做赘述！
-
-
 
 ### 6.3 Config编辑
 
@@ -312,9 +319,6 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   | ServerAliveInterval |                                       | 30   |
   | TCPKeepAlive        |                                       | yes  |
 
-  
-
-
 
 ## 7. 文件传输
 
@@ -333,7 +337,7 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   scp -P 22 C:\Users\liu\.ssh/id_ed25519 test@192.168.114.155:~/
   ```
 
-  把 id_rsa.pub 上传到SSH服务器的test用户的主目录下面。
+  把 `id_rsa.pub` 上传到SSH服务器的`test`用户的主目录下面。
 
 - 下载文件：
 
@@ -341,13 +345,11 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   scp -P 22 test@192.168.114.155:~/ssh_host_ed25519_key C:\Users\liu\.ssh/ssh_host_ed25519_key
   ```
 
-  把 SSH 服务器的 ssh_host_ed25519_key 文件，下载到本地。
-
-
+  把 `SSH` 服务器的 `ssh_host_ed25519_key` 文件，下载到本地。
 
 ## 8. 配置服务器
 
-- 编辑 /etc/ssh 目录下的 sshd_config 文件：
+- 编辑 `/etc/ssh` 目录下的 `sshd_config` 文件：
 
   ```bash
   sudo nano /etc/ssh/sshd_config
@@ -363,9 +365,7 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   | AuthorizedKeysFile     | 放公钥文件的地方。                                           |      |
   | PasswordAuthentication | 值是yes，允许SSH用密码登录。由于这里我们想设置为ssh密钥登录，因此，需要将PasswordAuthentication设置为no。 |      |
 
-  
-
-- 编辑 authorized_keys ：
+- 编辑 `authorized_keys`：
 
   ```bash
   sudo mkdir ~/.ssh/
@@ -391,7 +391,7 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   /etc/rc.d/init.d/sshd restart
   ```
 
-  私钥的操作权限需要设置为 600，否则重置SSH服务器失败。
+  私钥的操作权限需要设置为 `600`，否则重置SSH服务器失败。
 
 ## 9. 解除私钥密码
 
@@ -411,19 +411,16 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   ssh-keygen -t rsa1 /etc/ssh/ssh_host_rsa1_key
   ```
 
-  
-
 - 解除私钥密码：
 
   ```bash
   openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa
   ```
 
-  
 
 ## 附1. 安装PowerShell
 
-命令提示符 对部分指令的识别还是有问题的，例如： ~/.ssh/
+命令提示符 对部分指令的识别还是有问题的，例如： `~/.ssh/`
 
 - 命令提示符 输入如下指令：
 
@@ -432,7 +429,7 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   The system cannot find the path specified.
   ```
 
-  无法找到该路径，其实这是一个类 Linux 的路径。
+  无法找到该路径，其实这是一个类 `Linux` 的路径。
 
 - PowerShell 输入如下指令：
 
@@ -441,11 +438,11 @@ So，我们接下来要做的其实是如何安装并开启SSH Server。
   PS C:\Users\liu\.ssh>
   ```
 
-  能够正确找到该路径，PowerShell 可以执行类 Linux 指令。对习惯 Linux 用户非常友好。
+  能够正确找到该路径，`PowerShell` 可以执行类 `Linux` 指令。对习惯 `Linux` 用户非常友好。
 
 - 安装 PowerShell 
 
-  输入 `winget install Microsoft.PowerShell`，信息如下，就可以安装 PowerShell 。
+  输入 `winget install Microsoft.PowerShell`，信息如下，就可以安装 `PowerShell`。
 
   ```shell
   C:\>winget install Microsoft.PowerShell
