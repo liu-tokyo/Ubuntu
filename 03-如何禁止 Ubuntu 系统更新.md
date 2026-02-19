@@ -10,9 +10,7 @@ Ubuntu 默认开启了 `unattended-upgrades` 服务。这是“罪魁祸首”�
 
 在终端执行：
 
-Bash
-
-```
+```bash
 sudo systemctl stop apt-daily.timer
 sudo systemctl disable apt-daily.timer
 sudo systemctl stop apt-daily-upgrade.timer
@@ -29,15 +27,13 @@ sudo systemctl disable apt-daily-upgrade.timer
 
 2. 将所有值改为 `"0"`。修改后的内容应该如下：
 
-   Plaintext
-
-   ```
+   ```Plaintext
    APT::Periodic::Update-Package-Lists "0";
    APT::Periodic::Download-Upgradeable-Packages "0";
    APT::Periodic::AutocleanInterval "0";
    APT::Periodic::Unattended-Upgrade "0";
    ```
-
+   
    *(如果没有这个文件，可以手动创建一个，内容如上即可。)*
 
 ------
@@ -46,9 +42,7 @@ sudo systemctl disable apt-daily-upgrade.timer
 
 为了保险，还可以修改另一个配置文件 `/etc/apt/apt.conf.d/10periodic`：
 
-Bash
-
-```
+```bash
 sudo nano /etc/apt/apt.conf.d/10periodic
 ```
 
@@ -60,9 +54,7 @@ sudo nano /etc/apt/apt.conf.d/10periodic
 
 作为文件服务器，内核更新后的重启往往是最麻烦的。如果你想确保内核版本永远不动，可以锁定当前内核：
 
-Bash
-
-```
+```bash
 # 查看当前使用的内核
 uname -r
 
@@ -150,17 +142,13 @@ echo "--- 所有操作已完成！你的文件服务器现在处于静默状态 
 
 3. **赋予执行权限**：
 
-   Bash
-
-   ```
+   ```bash
    chmod +x disable-updates.sh
    ```
-
+   
 4. **运行脚本**：
 
-   Bash
-
-   ```
+   ```Bash
    sudo ./disable-updates.sh
    ```
 
@@ -184,9 +172,7 @@ echo "--- 所有操作已完成！你的文件服务器现在处于静默状态 
 
 在脚本中我们使用了 `mask` 命令，这会让服务彻底失效。你可以运行以下命令：
 
-Bash
-
-```
+```bash
 systemctl status apt-daily.timer apt-daily-upgrade.timer
 ```
 
@@ -199,23 +185,19 @@ systemctl status apt-daily.timer apt-daily-upgrade.timer
 
 直接读取配置文件，确认所有的开关都已归零：
 
-Bash
-
-```
+```bash
 cat /etc/apt/apt.conf.d/20auto-upgrades
 ```
 
 - **预期结果**：
 
-  Plaintext
-
-  ```
+  ```Plaintext
   APT::Periodic::Update-Package-Lists "0";
   APT::Periodic::Download-Upgradeable-Packages "0";
   APT::Periodic::AutocleanInterval "0";
   APT::Periodic::Unattended-Upgrade "0";
   ```
-
+  
 - **验证 Release 升级检查**：
 
   运行 `cat /etc/update-manager/release-upgrades`，确保 `Prompt=never`。
@@ -226,9 +208,7 @@ cat /etc/apt/apt.conf.d/20auto-upgrades
 
 确认内核和相关组件是否被标记为“禁止变动”：
 
-Bash
-
-```
+```bash
 apt-mark showhold
 ```
 
@@ -241,9 +221,7 @@ apt-mark showhold
 
 你可以强制触发一次无人值守更新的检查流程，看看它是否会因为我们的设置而跳过：
 
-Bash
-
-```
+```Bash
 sudo unattended-upgrade --dry-run --debug
 ```
 
