@@ -1,4 +1,4 @@
-# 使用Samba创建文件服务器
+## 使用Samba创建文件服务器
 
 在 Ubuntu 上搭建 **Samba** 是实现“全家桶”互联最明智的选择。它能让您的 Windows 像访问本地磁盘（D 盘、E 盘）一样访问 Ubuntu 上的 GitLab 仓库或公共文件夹。
 
