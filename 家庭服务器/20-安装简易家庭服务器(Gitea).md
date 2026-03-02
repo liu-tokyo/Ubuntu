@@ -234,53 +234,6 @@
      | SSH 服务端口 | 22                    | 默认 |
   
      *这些配置选项将写入以下位置: `/etc/gitea/app.ini`*
-  
-- **错误：目录权限 `/var/lib/gitea/data`**
-
-  预先手动创建数据库文件（如果 Gitea 还是无法自动创建文件，我们可以手动“喂”给它一个已经设好权限的空文件：）
-
-  ```bash
-  # 确保 data 目录存在
-  sudo mkdir -p /var/lib/gitea/data
-  
-  # 创建空数据库文件
-  sudo touch /var/lib/gitea/data/gitea.db
-  
-  # 再次统一权限
-  sudo chown -R git:git /var/lib/gitea/data/
-  sudo chmod 660 /var/lib/gitea/data/gitea.db
-  ```
-
-  **确认目录权属**
-
-  虽然文件夹存在，但如果它是用 `root` 创建的，`git` 用户就无法写入。
-
-  请执行以下命令，确保整个 `/var/lib/gitea` 目录都属于 `git` 用户：
-
-  ```bash
-  sudo chown -R git:git /var/lib/gitea/
-  sudo chmod -R 750 /var/lib/gitea/
-  ```
-
-- **错误：`mkdir /etc/gitea`**
-
-  如果 `/etc/gitea` 目录本身还不存在（虽然之前的步骤创建过），请重新创建并赋权：
-
-  ```bash
-  sudo mkdir -p /etc/gitea
-  sudo chown root:git /etc/gitea
-  sudo chmod 770 /etc/gitea
-  ```
-
-  **修正目录所有权**
-
-  Gitea 在安装过程中需要将网页上的配置写入 `/etc/gitea/app.ini`。我们需要把这个目录的控制权临时（或持久）交给 `git` 用户：
-
-  ```bash
-  # 将目录所属组改为 git，并赋予写入权限
-  sudo chown -R root:git /etc/gitea
-  sudo chmod -R 770 /etc/gitea
-  ```
 
   **安装完成后的安全加固**
 
