@@ -75,7 +75,7 @@
 
 ### 2.1 安装
 
-- 更新系统并安装依赖
+- **更新系统并安装依赖**
 
   首先，确保你的系统软件包是最新的，并安装必要的 Git 环境。
 
@@ -84,7 +84,7 @@
   sudo apt install git sqlite3 -y
   ```
 
-- 创建运行用户
+- **创建运行用户**
 
   出于安全考虑，Gitea 不应该以 root 身份运行。我们创建一个名为 `git` 的系统用户。
 
@@ -98,7 +98,7 @@
      git
   ```
 
-- 下载并配置目录
+- **下载并配置目录**
 
   前往 [Gitea 官网下载页面](https://dl.gitea.com/gitea/) 获取最新的二进制文件（通常选择 `gitea-1.x.x-linux-amd64`）。
 
@@ -145,7 +145,7 @@
   sudo usermod -d /home/git git
   ```
 
-- 创建 Systemd 服务
+- **创建 Systemd 服务**
 
   为了让 Gitea 随系统启动，我们需要创建一个服务文件： 
 
@@ -213,7 +213,7 @@
 
 ### 2.2 设置
 
-- 通过网页进行初始设置
+- **通过网页进行初始设置**
 
   Gitea 默认在 **3000** 端口运行。
 
@@ -257,7 +257,7 @@
 
 ### 2.4 服务器 IP 改变
 
-- 服务器端 IP 地址变化之后，需要修改 Gitea 的配置文件：
+- **服务器端 IP 地址变化之后，需要修改 Gitea 的配置文件：**
 
   ```
   sudo nano /etc/gitea/app.ini
@@ -285,7 +285,7 @@
 
 ### 3.1 安装 Nginx
 
-- 如果你还没有安装 Nginx，请先运行：
+- **如果你还没有安装 Nginx，请先运行：**
 
   ```bash
   sudo apt update
@@ -294,7 +294,7 @@
 
 ### 3.2 创建 Gitea 配置文件
 
-- 创建一个新的虚拟主机配置文件：
+- **创建一个新的虚拟主机配置文件：**
 
   ```
   sudo nano /etc/nginx/sites-available/gitea
@@ -322,7 +322,7 @@
 
 ### 3.3 启用配置并测试
 
-- 执行以下命令建立软链接并重启 Nginx：
+- **执行以下命令建立软链接并重启 Nginx：**
 
   ```bash
   # 启用配置
@@ -337,7 +337,7 @@
 
 ### 3.4 配置 HTTPS (使用 Let's Encrypt)
 
-- 手动配置 SSL 比较繁琐，推荐使用 **Certbot** 自动获取免费证书。这不仅安全，还能自动完成 Nginx 的配置修改。
+- **手动配置 SSL 比较繁琐，推荐使用 Certbot 自动获取免费证书。这不仅安全，还能自动完成 Nginx 的配置修改。**
 
   ```bash
   sudo apt install certbot python3-certbot-nginx -y
@@ -350,20 +350,20 @@
 
 为了确保 Gitea 生成的链接（如 Clone 链接）正确，你需要更新 Gitea 的 `app.ini`。
 
-1. 打开配置文件：
+1. **打开配置文件：**
 
    ```bash
    sudo nano /etc/gitea/app.ini
    ```
 
-2. 找到 `[server]` 部分，修改以下两项：
+2. **找到 `[server]` 部分，修改以下两项：**
 
    ```bash
    DOMAIN = git.example.com
    ROOT_URL = https://git.example.com/
    ```
 
-3. 重启 Gitea：
+3. **重启 Gitea：**
 
    ```bash
    sudo systemctl restart gitea
@@ -454,13 +454,13 @@
 
 在你的 **本地终端** 输入以下命令（请根据你的实际域名和端口修改）：
 
-- 如果使用默认 22 端口：
+- **如果使用默认 22 端口：**
 
   ```bash
   ssh -T git@yourdomain.com
   ```
 
-- 如果你修改了 SSH 端口（例如 2222）：
+- **如果你修改了 SSH 端口（例如 2222）：**
 
   ```
   ssh -T git@yourdomain.com -p 2222
@@ -482,7 +482,7 @@
 
 ### 4.5 进阶提示：配置本地 SSH Config
 
-- 为了避免每次都要输入端口号或长域名，你可以在本地创建/修改 `~/.ssh/config` 文件：
+- **为了避免每次都要输入端口号或长域名，你可以在本地创建/修改 `~/.ssh/config` 文件：**
 
     ```Plaintext
     Host mygit
@@ -500,8 +500,10 @@
 
 ### 5.1 安装 Git for Windows
 
-- ```powershell
-  winget install --id 7zip.7zip --source winget
+- **安装 Git for Windows**
+  
+  ```powershell
+  winget install --id Git.Git --source winget
   ```
   
   如何 Windows10 尚未安装 Winget 工具，执行如下指令进行安装（终端管理员）：
@@ -516,7 +518,7 @@
   Write-Host "Done."
   ```
 
-- 配置 Git 信息
+- **配置 Git 信息**
 
   ```powershell
   git config --global user.email "xxx@yyy.com"
@@ -577,9 +579,9 @@
 
 ### 5.4 仓库文件没有绿色对勾
 
-可能需要重新启动客户端电脑，就能解决，如果无法解决，使用如下办法解决：
+可能需要 **重新启动客户端电脑**，就能解决，如果仍然无法解决，使用如下办法解决：
 
-- 修改图标覆盖设置（最有效）
+- **修改图标覆盖设置（最有效）**
 
   Windows 对图标覆盖的数量有限制（通常只有 11-15 个），如果你安装了 OneDrive、Dropbox、云盘等，它们会抢占名额，导致 TortoiseGit 的图标排不上号。
 
@@ -588,7 +590,7 @@
   3. 在右侧找到 **Status cache** (状态缓存)，将其改为 **Shell**（如果原本是 Shell，尝试改为 **Default**）。
   4. 在下方的 **Drive Types** (驱动器类型) 中，确保勾选了 **Fixed drives** (固定驱动器) 和 **Network drives** (如果你在用网盘/虚拟机)。
 
-- 注册表“上位”法（强力修复）
+- **注册表“上位”法（强力修复）**
 
   如果上面的设置无效，说明你的 Windows 注册表被其他软件占满了。
 
@@ -598,7 +600,7 @@
   4. **技巧**：在所有以 `Tortoise` 开头的文件夹名字前面**加几个空格**（例如把 `TortoiseAdded` 改成 `   TortoiseAdded`），让它们的排名强行排到最前面。
   5. **重启电脑**或在任务管理器里重启 `explorer.exe` (资源管理器)。
 
-- 检查目录是否被排除
+- **检查目录是否被排除**
 
   有时候你不小心把整个盘符加入了“排除列表”。
 
@@ -606,14 +608,14 @@
   2. 查看 **Exclude paths** (排除路径) 框里有没有你的代码目录。如果有，删掉它。
   3. 在 **Include paths** (包含路径) 中，尝试手动添加你的仓库路径（例如 `D:\Work\*`）。
 
-- 确认这真的是一个 Git 仓库
+- **确认这真的是一个 Git 仓库**
 
   虽然听起来很基础，但请确认文件夹内是否有隐藏的 `.git` 文件夹。
 
   - 如果没有 `.git` 文件夹，它只是普通文件，自然没有图标。
   - 如果之前在 Linux `/home/git` 下修改了权限或路径，导致克隆不完整，图标也不会出现。
 
-- 刷新缓存
+- **刷新缓存**
 
   如果只是偶尔卡住，可以尝试：
 
@@ -624,7 +626,7 @@
 
 ## 附1. Ubuntu 界面切换
 
-- 设置为纯指令模式启动：
+- **设置为纯指令模式启动：**
 
   ```bash
   sudo systemctl set-default multi-user.target
@@ -638,7 +640,7 @@
 
   **效果：** 重启后，你将不会看到登录背景和桌面，而是直接看到黑底白字的 `login:` 提示符。输入你的用户名和密码即可操作。
 
-- 临时回到桌面
+- **临时回到桌面**
 
   在指令界面登录后，输入：
 
@@ -648,7 +650,7 @@
 
   (如果是 Lubuntu，请将 `gdm3` 换成 `sddm` 或 `lightdm`)
 
-- 永久改回桌面启动：
+- **永久改回桌面启动：**
 
   ```bash
   sudo systemctl set-default graphical.target
