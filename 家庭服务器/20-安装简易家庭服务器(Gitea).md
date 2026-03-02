@@ -506,8 +506,15 @@
   winget install --id Git.Git --source winget
   ```
   
-  如何 Windows10 尚未安装 Winget 工具，执行如下指令进行安装（终端管理员）：
+  如果如下两个工具软件没有安装的话，最好也安装上：
 
+  ```powershell
+  winget install --id 7zip.7zip --source winget
+  winget install --id WinMerge.WinMerge --source winget
+  ```
+  
+  **注意：**如果 Windows10 尚未安装 Winget 工具，执行如下指令进行安装（终端管理员）：
+  
   ```powershell
   $progressPreference = 'silentlyContinue'
   Write-Host "Installing WinGet PowerShell module from PSGallery..."
@@ -517,7 +524,7 @@
   Repair-WinGetPackageManager
   Write-Host "Done."
   ```
-
+  
 - **配置 Git 信息**
 
   ```powershell
