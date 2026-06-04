@@ -187,17 +187,25 @@ sudo swapon /dev/zram0 -p 100
 
   使用 sysctl（更标准）
 
-  ```
+  ```bash
   sysctl vm.dirty_background_ratio
   sysctl vm.dirty_ratio
   ```
 
   输出示例：
 
-  ```
+  ```bash
   vm.dirty_background_ratio = 10
   vm.dirty_ratio = 20
   ```
+  
+  查看所有 dirty 相关参数：
+  
+  ```bash
+  sysctl -a | grep dirty
+  ```
+  
+  
 
 ## 什么是 dirty pages？
 
