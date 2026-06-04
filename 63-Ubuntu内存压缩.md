@@ -8,20 +8,16 @@
 
 1. **更新源并安装：**
 
-   Bash
-
-   ```
+   ```bash
    sudo apt update
    sudo apt install zram-tools
    ```
-
+   
 2. **配置（可选）：** 你可以编辑 `/etc/default/zramswap` 来调整分配多少内存作为压缩区（默认通常是 60%）。
 
 3. **启动服务：**
 
-   Bash
-
-   ```
+   ```bash
    sudo systemctl enable --now zramswap
    ```
 
@@ -31,17 +27,13 @@
 
 1. **安装：**
 
-   Bash
-
-   ```
+   ```bash
    sudo apt install zramd
    ```
-
+   
 2. **启动：**
 
-   Bash
-
-   ```
+   ```bash
    sudo systemctl enable --now zramd
    ```
 
@@ -51,17 +43,13 @@
 
 1. **临时加载：**
 
-   Bash
-
-   ```
+   ```bash
    sudo modprobe zram
    ```
-
+   
 2. **配置大小并启用：**（例如设置 4G 的压缩交换空间）
 
-   Bash
-
-   ```
+   ```bash
    # 这里的 num_devices 表示创建一个 zram 设备
    echo 4G | sudo tee /sys/block/zram0/disksize
    sudo mkswap /dev/zram0
@@ -72,21 +60,17 @@
 
 ### 如何确认是否生效？
 
-无论使用哪种方法，安装完成后运行以下命令查看：
+- 无论使用哪种方法，安装完成后运行以下命令查看：
 
-Bash
+    ```bash
+    zramctl
+    ```
 
-```
-zramctl
-```
+- 或者常用的：
 
-或者常用的：
-
-Bash
-
-```
-swapon --show
-```
+    ```bash
+    swapon --show
+    ```
 
 你会看到一个类型为 `partition` 或 `file` 之外的 `/dev/zram0` 设备。
 
@@ -110,9 +94,7 @@ swapon --show
 
 1. **编辑配置文件：**
 
-   Bash
-
-   ```
+   ```bash
    sudo nano /etc/default/zramswap
    ```
 
@@ -123,9 +105,7 @@ swapon --show
 
 3. **重启服务应用更改：**
 
-   Bash
-
-   ```
+   ```Bash
    sudo service zramswap restart
    ```
 
@@ -135,9 +115,7 @@ swapon --show
 
 1. **修改脚本逻辑：**
 
-   Bash
-
-   ```
+   ```Bash
    sudo nano /usr/bin/init-zram-swapping
    ```
 
@@ -149,9 +127,7 @@ swapon --show
 
 如果你不想翻配置文件，想直接把 `zram0` 改大，可以执行以下一系列命令：
 
-Bash
-
-```
+```Bash
 # 1. 禁用当前的 zram 设备
 sudo swapoff /dev/zram0
 
