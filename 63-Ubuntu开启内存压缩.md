@@ -45,6 +45,8 @@
 
    ```bash
    sudo modprobe zram
+   # 应该指定设备数量，否则或许的指令无效。
+   sudo modprobe zram num_devices=1
    ```
    
 2. **配置大小并启用：**（例如设置 4G 的压缩交换空间）
