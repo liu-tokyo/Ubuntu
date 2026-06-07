@@ -234,7 +234,7 @@ sudo unattended-upgrade --dry-run --debug
 | **检查项**   | **命令**                                   | **理想状态**          |
 | ------------ | ------------------------------------------ | --------------------- |
 | **定时器**   | `systemctl status apt-daily.timer`         | `inactive` / `masked` |
-| **配置值**   | `apt-config dump                           | grep Periodic`        |
+| **配置值** | `apt-config dump` |grep Periodic|
 | **内核锁**   | `apt-mark showhold`                        | 显示内核包名          |
 | **版本更新** | `cat /etc/update-manager/release-upgrades` | `Prompt=never`        |
 
