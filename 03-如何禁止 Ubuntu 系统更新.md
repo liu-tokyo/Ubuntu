@@ -8,35 +8,33 @@
 
 Ubuntu 默认开启了 `unattended-upgrades` 服务。这是“罪魁祸首”，需要先停掉它。
 
-在终端执行：
+- 方法1：终端指令
 
-```bash
-sudo systemctl stop apt-daily.timer
-sudo systemctl disable apt-daily.timer
-sudo systemctl stop apt-daily-upgrade.timer
-sudo systemctl disable apt-daily-upgrade.timer
-```
+    ```bash
+    sudo systemctl stop apt-daily.timer
+    sudo systemctl disable apt-daily.timer
+    sudo systemctl stop apt-daily-upgrade.timer
+    sudo systemctl disable apt-daily-upgrade.timer
+    ```
 
-直接编辑可能更为方便：
+- 方法2：直接编辑
 
-```bash
-sudo nano /etc/apt/apt.conf.d/20auto-upgrades
-```
-
-将里面的参数全部改为 `0`（关闭自动获取和安装）：
-
-```
-APT::Periodic::Update-Package-Lists "0";
-APT::Periodic::Unattended-Upgrade "0";
-```
-
-一键手动更新（推荐）：
-
-```
-sudo apt update && sudo apt upgrade -y && sudo snap refresh
-```
-
-
+    ```bash
+    sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+    ```
+    
+    将里面的参数全部改为 `0`（关闭自动获取和安装）：
+    
+    ```bash
+    APT::Periodic::Update-Package-Lists "0";
+    APT::Periodic::Unattended-Upgrade "0";
+    ```
+    
+    一键手动更新（推荐）：
+    
+    ```bash
+    sudo apt update && sudo apt upgrade -y && sudo snap refresh
+    ```
 
 ------
 
