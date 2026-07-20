@@ -17,6 +17,27 @@ sudo systemctl stop apt-daily-upgrade.timer
 sudo systemctl disable apt-daily-upgrade.timer
 ```
 
+直接编辑可能更为方便：
+
+```bash
+sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+```
+
+将里面的参数全部改为 `0`（关闭自动获取和安装）：
+
+```
+APT::Periodic::Update-Package-Lists "0";
+APT::Periodic::Unattended-Upgrade "0";
+```
+
+一键手动更新（推荐）：
+
+```
+sudo apt update && sudo apt upgrade -y && sudo snap refresh
+```
+
+
+
 ------
 
 ### 2. 修改配置文件彻底禁用
